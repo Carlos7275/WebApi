@@ -17,11 +17,12 @@ uas.sql //Base de Datos  Uas
 }
 
 Requerimentos para poder usar este proyecto:
-  PHP +8.18.
   
-  MYSQL.
+  .PHP +8.18.
+
+  .MYSQL.
   
-  Imsomnia , PostMan o Cualquier Aplicacion de ese tipo.
+  .Imsomnia , PostMan o Cualquier Aplicacion de ese tipo.
   
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
