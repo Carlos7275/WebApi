@@ -1,6 +1,6 @@
 <?php
 class Authorization{
-    
+    //Obtiene la header de  authorization
   static  public function getAuthorization(){
     
    

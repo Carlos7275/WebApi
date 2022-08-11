@@ -1,9 +1,11 @@
 <?php
+//Controlador de Alumnos 
+//Maneja el Crud Completo de la Tabla Alumnos-Datos_Alumnos
 class AlumnosController{
 
 
     public function Error($e){
-        header("HTTP/1.0 500");
+        header("HTTP/1.0 500"); //Cabecera que Indica que hay un error en el Servidor
         $json=array("message" => "¡Hubo un Error!","status"=>500,"data" => $e->getMessage());
         echo json_encode($json);
         return ;
@@ -11,11 +13,19 @@ class AlumnosController{
 
     public function index(){
         try{
-            $alumnos=AlumnosModel::MostrarUsuariosRegistrados("ACTIVO",2);
+            if(AlumnosModel::IsValidToken(Authorization::getAuthorization())){
+                $alumnos=AlumnosModel::MostrarUsuariosRegistrados("ACTIVO",2);
 
-            $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> $alumnos);
-            echo json_encode($json);
-            return ;
+                $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> $alumnos);
+                echo json_encode($json);
+                return ;
+            }
+            else{
+                header("HTTP/1.0 401 Not Authorized");
+                echo "No tienes derecho ha acceder aqui";
+
+            }
+         
         }
         catch(Exception $e){
           AlumnosController::Error($e);
@@ -44,6 +54,7 @@ class AlumnosController{
             }else{
                 header("HTTP/1.0 401 Not Authorized ");
                 echo "No tienes derecho ha acceder aqui";
+
             }
             
           

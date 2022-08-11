@@ -1,7 +1,8 @@
 <?php
 require_once "Connection.php";
 require_once "./libraries/src/JWT.php";
-use Firebase\JWT\JWT;
+
+use Firebase\JWT\JWT; //Usa el Namespace del Archivo JWT
 class AlumnosModel{
     //Muestra todos los Registros de dicha tabla
     static public function index($tabla){
@@ -123,16 +124,12 @@ class AlumnosModel{
                 
 
                 if($stmt->rowCount()>0){
-                    if(!AlumnosModel::VerificarToken($datos["NumCuenta"])){ //Caso que no exista el Token
+                    
                         $datos=AlumnosModel::MostrarUsuarioEspecifico($datos["NumCuenta"]);
                         $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> AlumnosModel::InsertarToken($datos));
                         echo json_encode($json);
-                    }
-                    else{ //Caso que si Exista
-                        $token=AlumnosModel::VerificarToken($datos["NumCuenta"]);
-                        $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> $token["Token"]);
-                        echo json_encode($json);
-                    }
+                   
+               
                 
                 }   
                 else{
@@ -199,7 +196,7 @@ class AlumnosModel{
             $jwt=JWT::encode($token,'68V0zWFrS72GbpPreidkQFLfj4v9m3Ti+DXc8OB0gcM=',"HS256");
     
             
-            $stmt=Connection::connect()->prepare("insert into usuarios_token values(:numCuenta,:token,'ACTIVO',default)");
+            $stmt=Connection::connect()->prepare("update usuarios_token set NumCuenta=:numCuenta,Token=:token,Estatus='ACTIVO' where NumCuenta=:numCuenta");
             $stmt->bindParam(":numCuenta",$datos["NumCuenta"]);
             $stmt->bindParam(":token",$jwt);
             $stmt->execute();
