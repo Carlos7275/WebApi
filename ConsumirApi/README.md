@@ -1,7 +1,7 @@
 Frontend Basico en C# MVC Windows Form  Elaborado por Carlos 12/08/22 
 -----------------------------------------------------------------------------
 
-ConsumirApi{
+ConsumirApi
     .Controllers ->Aqui se encuentra los controladores de los Servicios
 
     .Models ->Aqui se Encuentran los Modelos Necesarios para el Proyecto

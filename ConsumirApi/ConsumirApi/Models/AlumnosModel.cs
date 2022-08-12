@@ -17,6 +17,7 @@ namespace ConsumirApi.Models
         public string Correo { get; set; }
         public string Telefono { get; set; }
         public string Domicilio { get; set; }
+        public string Curp { get; set; }
         public string CodigoPostal { get; set; }
         public string AfiliacionImss { get; set; }
         public int Discapacidad { get; set; }

@@ -35,19 +35,21 @@ namespace ConsumirApi
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.lblDatos = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.NumCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CURP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Domicilio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Discapacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AfiliacionIMSS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_ROL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblDatos = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_NumCuenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -119,21 +121,45 @@ namespace ConsumirApi
             this.ApellidoPaterno,
             this.ApellidoMaterno,
             this.Correo,
+            this.CURP,
             this.Telefono,
             this.Domicilio,
             this.CodigoPostal,
             this.Discapacidad,
             this.AfiliacionIMSS,
+            this.ID_ROL,
             this.Estatus});
             this.dataGridView2.Location = new System.Drawing.Point(19, 55);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(503, 172);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
+            // 
+            // lblDatos
+            // 
+            this.lblDatos.AutoSize = true;
+            this.lblDatos.Location = new System.Drawing.Point(38, 13);
+            this.lblDatos.Name = "lblDatos";
+            this.lblDatos.Size = new System.Drawing.Size(38, 13);
+            this.lblDatos.TabIndex = 1;
+            this.lblDatos.Text = "Datos:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(504, 300);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Cerrar Sesion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // NumCuenta
             // 
             this.NumCuenta.HeaderText = "NumCuenta";
             this.NumCuenta.Name = "NumCuenta";
+            this.NumCuenta.ReadOnly = true;
             // 
             // Nombres
             // 
@@ -154,6 +180,11 @@ namespace ConsumirApi
             // 
             this.Correo.HeaderText = "Correo";
             this.Correo.Name = "Correo";
+            // 
+            // CURP
+            // 
+            this.CURP.HeaderText = "CURP";
+            this.CURP.Name = "CURP";
             // 
             // Telefono
             // 
@@ -180,29 +211,15 @@ namespace ConsumirApi
             this.AfiliacionIMSS.HeaderText = "AfiliacionIMSS";
             this.AfiliacionIMSS.Name = "AfiliacionIMSS";
             // 
+            // ID_ROL
+            // 
+            this.ID_ROL.HeaderText = "ID_ROL";
+            this.ID_ROL.Name = "ID_ROL";
+            // 
             // Estatus
             // 
             this.Estatus.HeaderText = "Estatus";
             this.Estatus.Name = "Estatus";
-            // 
-            // lblDatos
-            // 
-            this.lblDatos.AutoSize = true;
-            this.lblDatos.Location = new System.Drawing.Point(38, 13);
-            this.lblDatos.Name = "lblDatos";
-            this.lblDatos.Size = new System.Drawing.Size(38, 13);
-            this.lblDatos.TabIndex = 1;
-            this.lblDatos.Text = "Datos:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(504, 300);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Cerrar Sesion";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MenuPrincipal
             // 
@@ -234,20 +251,22 @@ namespace ConsumirApi
         private System.Windows.Forms.Label lblDatos;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btn_Actualizar;
+        private System.Windows.Forms.NumericUpDown NUD_NumCuenta;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoPaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoMaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CURP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Domicilio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPostal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Discapacidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn AfiliacionIMSS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_ROL;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estatus;
-        private System.Windows.Forms.Button btn_Actualizar;
-        private System.Windows.Forms.NumericUpDown NUD_NumCuenta;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_Buscar;
     }
 }

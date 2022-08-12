@@ -15,7 +15,7 @@ class AlumnosModel{
 
     //Muestra a los Usuarios Registrados de Acuerdo a su Estatus y Rol
     static  public function MostrarUsuariosRegistrados($estatus="",$Rol=""){
-        $stmt=Connection::connect()->prepare("SELECT usuarios.NumCuenta,Nombres,ApellidoPaterno,ApellidoMaterno,Correo,Telefono,Domicilio,CodigoPostal,AfiliacionImss,Discapacidad,ID_ROL,Estatus FROM usuarios inner join Datos_usuario on usuarios.NumCuenta=Datos_usuario.NumCuenta  and id_rol=$Rol");
+        $stmt=Connection::connect()->prepare("SELECT usuarios.NumCuenta,Nombres,ApellidoPaterno,ApellidoMaterno,Correo,Curp,Telefono,Domicilio,CodigoPostal,AfiliacionImss,Discapacidad,ID_ROL,Estatus FROM usuarios inner join Datos_usuario on usuarios.NumCuenta=Datos_usuario.NumCuenta  and id_rol=$Rol");
 
 
         $stmt->execute();
@@ -26,7 +26,7 @@ class AlumnosModel{
     }
 //Mostrar Usuario Especifico
     static  public function MostrarUsuarioEspecifico($id){
-        $stmt=Connection::connect()->prepare("SELECT usuarios.NumCuenta,Nombres,ApellidoPaterno,ApellidoMaterno,Correo,Telefono,Domicilio,CodigoPostal,AfiliacionImss,Discapacidad,ID_ROL,Estatus FROM usuarios inner join Datos_usuario on usuarios.NumCuenta=Datos_usuario.NumCuenta  where  usuarios.NumCuenta=$id");
+        $stmt=Connection::connect()->prepare("SELECT usuarios.NumCuenta,Nombres,ApellidoPaterno,ApellidoMaterno,Correo,CURP,Telefono,Domicilio,CodigoPostal,AfiliacionImss,Discapacidad,ID_ROL,Estatus FROM usuarios inner join Datos_usuario on usuarios.NumCuenta=Datos_usuario.NumCuenta  where  usuarios.NumCuenta=$id");
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->close();
@@ -80,9 +80,10 @@ class AlumnosModel{
         
         try{
        
-            $stmt=Connection::connect()->prepare("update usuarios set Estatus=:Estatus where NumCuenta=:numCuenta");
+            $stmt=Connection::connect()->prepare("update usuarios set ID_ROL=:Rol,Estatus=:Estatus where NumCuenta=:numCuenta");
             $stmt->bindParam(":numCuenta",$data["NumeroCuenta"]);
             $stmt->bindParam(":Estatus",$data["Estatus"]);
+            $stmt->bindParam(":Rol",$data["ID_ROL"]);
             $stmt->execute();
             $stmt=null;
 
@@ -99,7 +100,7 @@ class AlumnosModel{
             $stmt->bindParam(":Curp",$data["Curp"]);
             $stmt->bindParam(":Discapacidad",$data["Discapacidad"]);
             $stmt->bindParam(":AfiliacionImss",$data["Afiliacion_IMSS"]);
-
+      
             $stmt->execute();
        
             return "Se Modifico correctamente el Usuario!";

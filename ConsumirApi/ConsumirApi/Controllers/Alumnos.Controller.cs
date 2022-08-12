@@ -66,6 +66,32 @@ namespace ConsumirApi.Controllers
             return null;
         }
 
+        public async void ModificarAlumno(object data,TokenModel token)
+        {
+            var obj = await objAlumnos.ModificarAlumno(data,token);
+
+
+            if (obj != null)
+            {
+                
+                string jsonString = obj.Content.ReadAsStringAsync().Result;
+
+                var objdata = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultAuth>(jsonString);
+                
+                if (Convert.ToInt16(objdata.Status)== 200)
+                {
+                    MessageBox.Show(objdata.data, objdata.Message,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+                 else
+                    MessageBox.Show(objdata.data, objdata.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }
+
+
+        
+        }
+
         public async Task<Result<AlumnosModel>> ObtenerAlumnoEspecifico(object data,TokenModel token)
         {
             var obj = await objAlumnos.ObtenerAlumnosEspecifico(data,token);

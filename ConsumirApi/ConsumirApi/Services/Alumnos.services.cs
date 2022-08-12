@@ -92,6 +92,35 @@ namespace ConsumirApi.Services
 
         }
 
+        public async Task<HttpResponseMessage> ModificarAlumno(object data, TokenModel token)
+        {
+
+            cliente.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token.Token);
+
+
+        
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+            
+        
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var result = await cliente.PutAsync(urlApi + "?u=ModificarAlumnoEspecifico", content);
+          
+            cliente = new HttpClient();
+            cliente.DefaultRequestHeaders.ProxyAuthorization = null;
+
+
+            return result;
+
+
+
+
+
+
+        }
+
+
         public void Dispose()
         {
             throw new NotImplementedException();
