@@ -1,7 +1,8 @@
 Frontend Basico en C# MVC Windows Form  Elaborado por Carlos 12/08/22 
 -----------------------------------------------------------------------------
 
-ConsumirApi
+ConsumirApi{
+    
     .Controllers ->Aqui se encuentra los controladores de los Servicios
 
     .Models ->Aqui se Encuentran los Modelos Necesarios para el Proyecto
@@ -15,11 +16,11 @@ ConsumirApi
 
 
 Requerimentos para usar este proyecto:
+ 
+      .Visual Studio 2019 o Superior
 
-.Visual Studio 2019 o Superior
+      .API-REST de PHP
 
-.API-REST de PHP
-
-.Paquetes NewtonJson y JWT entre otros.
+      .Paquetes NewtonJson y JWT entre otros.
 
 ------------------------------------------------------------------------------

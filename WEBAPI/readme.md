@@ -1,28 +1,29 @@
-[Api Rest Elaborada en PHP con MVC]   Elaborada por Carlos Sandoval <11/08/2022>
+Api Rest Elaborada en PHP con MVC   Elaborada por Carlos Sandoval <11/08/2022>
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 WebApi{
-.controllers  //Aqui encontraras alos controladores que manejan a los Modelos
 
-.libraries //Aqui encontraras las Librerias  necesarias para la autenticacion de JWT
+    .controllers  ->Aqui encontraras alos controladores que manejan a los Modelos
 
-.models //Aqui Encontraras a los modelos necesarios 
+    .libraries ->Aqui encontraras las Librerias  necesarias para la autenticacion de JWT
 
-.paths  //Aqui encontraras un Archivo que maneja las rutas de la API
+    .models ->Aqui Encontraras a los modelos necesarios 
 
-.htaccess //Archivo de Configuracion de Servidor
+    .paths  ->Aqui encontraras un Archivo que maneja las rutas de la API
 
-index.php //Indice
+    .htaccess ->Archivo de Configuracion de Servidor
 
-uas.sql //Base de Datos  Uas
-}
+    .index.php ->Indice
 
+    .uas.sql ->Base de Datos  Uas
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Requerimentos para poder usar este proyecto:
   
-  .PHP +8.18.
+    .PHP +8.18.
 
-  .MYSQL.
+    .MYSQL.
   
-  .Imsomnia , PostMan o Cualquier Aplicacion de ese tipo.
+    .Imsomnia , PostMan o Cualquier Aplicacion de ese tipo.
   
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
