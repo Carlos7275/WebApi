@@ -1,6 +1,6 @@
 Api Rest Elaborada en PHP con MVC   Elaborada por Carlos Sandoval <11/08/2022>
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-WebApi{
+WebApi
 .controllers  //Aqui encontraras alos controladores que manejan a los Modelos
 
 .libraries //Aqui encontraras las Librerias  necesarias para la autenticacion de JWT
@@ -15,7 +15,7 @@ WebApi{
 
 .uas.sql //Base de Datos  Uas
 
-}
+
 
 Requerimentos para poder usar este proyecto:
   
