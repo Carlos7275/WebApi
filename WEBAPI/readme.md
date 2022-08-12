@@ -2,19 +2,19 @@ Api Rest Elaborada en PHP con MVC   Elaborada por Carlos Sandoval <11/08/2022>
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 WebApi{
 
-.controllers  //Aqui encontraras alos controladores que manejan a los Modelos
+.controllers  ->Aqui encontraras alos controladores que manejan a los Modelos
 
-.libraries //Aqui encontraras las Librerias  necesarias para la autenticacion de JWT
+.libraries ->Aqui encontraras las Librerias  necesarias para la autenticacion de JWT
 
-.models //Aqui Encontraras a los modelos necesarios 
+.models ->Aqui Encontraras a los modelos necesarios 
 
-.paths  //Aqui encontraras un Archivo que maneja las rutas de la API
+.paths  ->Aqui encontraras un Archivo que maneja las rutas de la API
 
-.htaccess //Archivo de Configuracion de Servidor
+.htaccess ->Archivo de Configuracion de Servidor
 
-.index.php //Indice
+.index.php ->Indice
 
-.uas.sql //Base de Datos  Uas
+.uas.sql ->Base de Datos  Uas
 
 
 
