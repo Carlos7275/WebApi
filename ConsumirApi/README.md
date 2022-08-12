@@ -16,11 +16,11 @@ ConsumirApi{
 
 
 Requerimentos para usar este proyecto:
+ 
+      .Visual Studio 2019 o Superior
 
-.Visual Studio 2019 o Superior
+      .API-REST de PHP
 
-.API-REST de PHP
-
-.Paquetes NewtonJson y JWT entre otros.
+      .Paquetes NewtonJson y JWT entre otros.
 
 ------------------------------------------------------------------------------
