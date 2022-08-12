@@ -1,4 +1,4 @@
-[Api Rest Elaborada en PHP con MVC]   Elaborada por Carlos Sandoval <11/08/2022>
+Api Rest Elaborada en PHP con MVC   Elaborada por Carlos Sandoval <11/08/2022>
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 WebApi{
 .controllers  //Aqui encontraras alos controladores que manejan a los Modelos
@@ -11,9 +11,10 @@ WebApi{
 
 .htaccess //Archivo de Configuracion de Servidor
 
-index.php //Indice
+.index.php //Indice
 
-uas.sql //Base de Datos  Uas
+.uas.sql //Base de Datos  Uas
+
 }
 
 Requerimentos para poder usar este proyecto:
