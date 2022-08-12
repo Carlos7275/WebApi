@@ -15,7 +15,7 @@ class AlumnosModel{
 
     //Muestra a los Usuarios Registrados de Acuerdo a su Estatus y Rol
     static  public function MostrarUsuariosRegistrados($estatus="",$Rol=""){
-        $stmt=Connection::connect()->prepare("SELECT usuarios.NumCuenta,Nombres,ApellidoPaterno,ApellidoMaterno,Correo,Telefono,Domicilio,CodigoPostal,AfiliacionImss,Discapacidad,ID_ROL,Estatus FROM usuarios inner join Datos_usuario on usuarios.NumCuenta=Datos_usuario.NumCuenta  where  estatus='$estatus' and id_rol=$Rol");
+        $stmt=Connection::connect()->prepare("SELECT usuarios.NumCuenta,Nombres,ApellidoPaterno,ApellidoMaterno,Correo,Telefono,Domicilio,CodigoPostal,AfiliacionImss,Discapacidad,ID_ROL,Estatus FROM usuarios inner join Datos_usuario on usuarios.NumCuenta=Datos_usuario.NumCuenta  and id_rol=$Rol");
 
 
         $stmt->execute();
@@ -125,18 +125,30 @@ class AlumnosModel{
 
                 if($stmt->rowCount()>0){
                     
+                    if(!AlumnosModel::ExisteToken($datos["NumCuenta"])){
+                      
                         $datos=AlumnosModel::MostrarUsuarioEspecifico($datos["NumCuenta"]);
                         $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> AlumnosModel::InsertarToken($datos));
                         echo json_encode($json);
+                    }
+                    else{
+                    
+                        $datos=AlumnosModel::MostrarUsuarioEspecifico($datos["NumCuenta"]);
+                        $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> AlumnosModel::ActualizarToken($datos));
+                        echo json_encode($json);
+                    }
+
                    
                
                 
                 }   
                 else{
+                    header("HTTP/1.0 401 Not Authorized ");
                     echo "El Numero de Cuenta o la Contraseña no Coinciden!";
                 }
             }
             else{
+                header("HTTP/1.0 401 Not Authorized ");
                 echo "No deje los Campos Vacios!";
             }
     
@@ -147,14 +159,16 @@ class AlumnosModel{
 
     }
 
-    static public function VerificarToken($datos){
+    static public function ExisteToken($datos){
         try{
 
             $stmt=Connection::connect()->prepare("select Token from usuarios_token where NumCuenta=:NumCuenta and Estatus='ACTIVO'");
             $stmt->bindParam(":NumCuenta",$datos);
             $stmt->execute();
+            
             if($stmt->rowCount()>0){
-                return $stmt->fetch(PDO::FETCH_ASSOC);
+ 
+           return true;
 
             }
             else{
@@ -175,6 +189,7 @@ class AlumnosModel{
             
             if($stmt->rowCount()>0){
               
+            
                 return true;
 
             }
@@ -187,7 +202,7 @@ class AlumnosModel{
         }
 
     }
-    static public function InsertarToken($datos){
+    static public function ActualizarToken($datos){
         try{
             
             $time=time();
@@ -205,6 +220,26 @@ class AlumnosModel{
         catch(Exception $e1){
             return "Error:".$e1->getMessage();
         }
+    }
+
+        static public function InsertarToken($datos){
+            try{
+                
+                $time=time();
+                $token=array("message"=>"¡Operacion con Exito!","status"=>200,"data"=>
+                $datos);
+                $jwt=JWT::encode($token,'68V0zWFrS72GbpPreidkQFLfj4v9m3Ti+DXc8OB0gcM=',"HS256");
+        
+    
+                $stmt=Connection::connect()->prepare("insert into  usuarios_token values(:numCuenta,:token,'ACTIVO',default)");
+                $stmt->bindParam(":numCuenta",$datos["NumCuenta"]);
+                $stmt->bindParam(":token",$jwt);
+                $stmt->execute();
+                return $jwt;
+            }
+            catch(Exception $e1){
+                return "Error:".$e1->getMessage();
+            }
     
 
     }

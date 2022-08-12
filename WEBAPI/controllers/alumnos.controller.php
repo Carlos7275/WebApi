@@ -72,10 +72,17 @@ class AlumnosController{
         try{
             if(AlumnosModel::IsValidToken(Authorization::getAuthorization())){
             $datos=AlumnosModel::MostrarUsuarioEspecifico($id["NumCuenta"]);
+            if($datos!=null){
+                $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> $datos);
+                echo json_encode($json);
+                return ;
+            }else{
+                header("HTTP/1.0 404 ");
+           
+                echo "No Se Encontro el Usuario con NumCuenta:".$id["NumCuenta"];
+            }
             
-            $json=array("message"=>"¡Operacion Exitosa!","status"=>200,"data"=> $datos);
-            echo json_encode($json);
-            return ;
+            
             }
             else{
                 header("HTTP/1.0 401 Not Authorized ");
